@@ -96,14 +96,26 @@
 
 /* --------------------------------------------------------------------------- */
 // 8. Дана строка. Сделайте заглавной последнюю букву каждого слова в этой строке.
-// Не решили!!!
+
+// let string = "hello world";
+// let arrRes = []
+// let arr = string.split(" ");
+
+// for (let i = 0; i < arr.length; i++) {
+//     if(arr[i] !== "")
+//         arrRes.push(arr[i].slice(0, -1) + arr[i].at(-1).toUpperCase());
+// }
+// let result = arrRes.join(" ");
+
+// console.log(result);
+
+// Решение Леры
 let string = "hello world";
 let arr = string.split(" ");
-console.log(arr[0].at(-1).toUpperCase);
+
 for (let i = 0; i < arr.length; i++) {
-    arr[i].at(-1) = "!";
+    arr[i] = arr[i] ? arr[i].slice(0, -1) + arr[i].at(-1).toUpperCase() : arr[i];
 }
 let result = arr.join(" ");
-
 console.log(result);
 
