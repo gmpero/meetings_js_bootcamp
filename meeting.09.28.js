@@ -85,14 +85,6 @@ console.log(returnLongestWord(newWords));
 // Результат: ['15.01.2024', '20.02.2024', '10.03.2024']
 const dates = ['2024-01-15', '2024-02-20', '2024-03-10'];
 
-let newDates = dates.map((value, i, arr) => arr[i].split('-').reverse().join('.'))
-console.log(newDates);
-
-function returNewDate2(arr) {
-  return arr.map((value, i, arr) => arr[i].split('-').reverse().join('.'))
-}
-console.log(returNewDate2(dates));
-
 function returNewDate(arr) {
   let newDates = [];
   for (let i = 0; i < arr.length; i++) {
@@ -102,21 +94,37 @@ function returNewDate(arr) {
 }
 console.log(returNewDate(dates));
 
+// Возможные решения через map
+let newDates = dates.map((value, i, arr) => arr[i].split('-').reverse().join('.'))
+console.log(newDates);
+
+function returNewDate2(arr) {
+  return arr.map((value, i, arr) => arr[i].split('-').reverse().join('.'))
+}
+console.log(returNewDate2(dates));
+
+function returNewDate3(arr) {
+  return arr.map((value) => value.split('-').reverse().join('.'))
+}
+console.log(returNewDate3(dates));
+
 
 // 8. Фильтрация по длине и содержанию * ДЗ
 // Задача: оставить предложения которые:
 // - Длиннее 10 символов
 // - Содержат слово 'programming' или 'development'
 // - Не содержат слово 'hello'
-// const sentences = [
-//   'The quick brown fox',
-//   'JavaScript is awesome',
-//   'Hello world',
-//   'Functional programming',
-//   'I love coding',
-//   'Web development'
-// ];
+const sentences = [
+  'The quick brown fox',
+  'JavaScript is awesome',
+  'Hello world',
+  'Functional programming',
+  'I love coding',
+  'Web development'
+];
 
+// let res = sentences.filter((value) => value.length > 10 && (value.includes('programming') || value.includes('development')) && !value.includes('hello'))
+// console.log(res);
 
 // 9. Напишите функцию, которая принимает массив слов и 
 // возвращает массив массивов, где слова-анаграммы сгруппированы вместе.
@@ -129,9 +137,37 @@ console.log(returNewDate(dates));
 // Ожидаемый результат: 
 // [['cat', 'act', 'tac'], ['dog', 'god'], ['mouse'], ['house']]
 
+const wordsTask9 = ['cat', 'act', 'dog', 'god', 'tac', 'mouse', 'house'];
+function groupAnagrams(words) {
+    const array = [...words];
+    const result = [];
+    let tmp = 0;
+
+    function sortString(string) {
+        return string.split('').sort().join('');
+    }
+     
+    for (let i = 0; i < array.length;) {
+        result.push([array[i]])
+        for (let j = 1; j < array.length; j++) {
+            if(array[i].length === array[j].length && sortString(array[i]) === sortString(array[j])) {
+                result[tmp].push(array[j]);
+                array.splice(j, 1);
+            }
+        }
+        array.splice(i, 1);
+        tmp++; // Временная перемення, чтобы определять индекс вложенного массива.
+    }
+
+    return result;
+}
+
+console.log(groupAnagrams(wordsTask9));
+console.log(wordsTask9);
 
 
-
+// ['cat', 'act', 'dog', 'god']
+console.log(groupAnagrams(['cat', 'act', 'dog', 'god']));
 
 
 
