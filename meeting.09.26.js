@@ -1,3 +1,6 @@
+/*26.09.2025*/
+// Темы: filter(), map(), reduce()
+
 // №1 Дан текст со словами. Запишите в массив все слова, начинающиеся на букву 'a'.
 // const text =
 // "After an adventurous afternoon, Alice ate an avocado and drank aromatic tea. Ancient artifacts and antique armor are displayed at the archaeological museum.";
