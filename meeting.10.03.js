@@ -104,7 +104,7 @@ for(let obj of arr){
 //     bonus: 1000
 // };
 // console.log(calculateBalance(budget)); 
-// Ожидаемый результат: 2800
+// Ожидаемый результат: 3800
 
 // 7. Поиск по значению. Напишите функцию для поиска всех ID по имени
 // const students = {
