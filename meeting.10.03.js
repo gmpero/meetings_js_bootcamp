@@ -1,42 +1,50 @@
 /*03.10.2025*/
 
 /*--- Теоретическая часть ---*/
-// Object.keys Object.values, Object.entries, delete
-// let obj = {name: 'Ivan', age: 18};
-// let arr = ['str 1', 'str 2', 'str 3'];
-// console.log(Object.keys(arr));
-// console.log(Object.values(arr));
-// console.log(Object.entries(arr));
-// delete obj.name;
-// console.log(obj);
+/* 
+Методы которые необходимо усвоить 
+Object.keys Object.values, Object.entries, delete 
+*/
+let obj = {name: 'Ivan', age: 18};
+let arrStrings = ['str 1', 'str 2', 'str 3'];
 
-// Работаю ли методы обектов с массивами
+console.log(Object.keys(obj));
+console.log(Object.values(obj));
+console.log(Object.entries(obj));
+
+console.log(Object.keys(arrStrings));
+console.log(Object.values(arrStrings));
+console.log(Object.entries(arrStrings));
+
+delete obj.name;
+console.log(obj);
+
+// Работаю ли методы обектов с массивами // Да, т.к массивы тоже обьекты
 
 // for in, for of - в чем разница? Когда удобнее применять?
-// for (let key in obj) {
-//     // console.log(obj[key]);
-// }
-
-// for (let [key, value] of Object.entries(obj)){
-//     console.log(key);
-//     console.log(value);
-//     console.log('\n');
-// }
+// for in - для обьектов
+// for of - для массивов
 
 // Что такое деструктуризация и как она может помочь перебрать обьект? 
-// Как пробежаться по массиву обьектов и вывести их все по очереди?
-// let arr = [
-//     {name: 'Ivan', age: 18},
-//     {name: 'Egor', age: 14},
-//     {name: 'Nikola', age: 38},
-//     {name: 'Ivan', age: 24}
-// ]
+for (let [key, value] of Object.entries(obj)){
+    console.log(key);
+    console.log(value);
+    console.log('\n');
+}
 
-// for(let obj of arr){
-//     if(obj.name == 'Ivan'){
-//         console.log("Это Иван");
-//     }
-// }
+// Как пробежаться по массиву обьектов и вывести их все по очереди?
+let arr = [
+    {name: 'Ivan', age: 18},
+    {name: 'Egor', age: 14},
+    {name: 'Nikola', age: 38},
+    {name: 'Ivan', age: 24}
+]
+
+for(let obj of arr){
+    if(obj.name == 'Ivan'){
+        console.log("Это Иван");
+    }
+}
 
 /*--- Практическая часть ---*/
 // 1. Напишите функцию для подсчета количества свойств в объекте
