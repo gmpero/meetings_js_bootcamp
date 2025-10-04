@@ -137,12 +137,12 @@ const orders = [
     { id: 4, product: 'pants', category: 'clothing', price: 80 }
 ];
 // Ожидаемый результат: { electronics: [...], clothing: [...] }
-const groupByCategories = (obj) => {
+const groupByCategories = (obj, category = 'category') => {
     const resultObject = new Object;
     for(const el of obj) {
-        if (resultObject[el.category] === undefined)
-            resultObject[el.category] = []
-        resultObject[el.category].push(el);
+        if (resultObject[el[category]] === undefined)
+            resultObject[el[category]] = []
+        resultObject[el[category]].push(el);
     }
     return resultObject;
 }
@@ -164,3 +164,150 @@ const deleteProperty = (obj, [...properties]) => {
     return obj;
 };
 console.log(deleteProperty(car, ['model', 'color'])); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Задачи на будущий meet
+/* 05.10.2025 */
+// 10. Подсчитать количество каждого элемента в массиве
+const fruits = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
+// Ожидаемый результат: {apple: 3, banana: 2, orange: 1}
+const countFruits = (array) => {
+    const resultObject = new Object;
+    for (const element of array) {
+        if(resultObject[element] === undefined)
+            resultObject[element] = 0;
+        resultObject[element] += 1;
+    }
+    return resultObject;
+};
+console.log(countFruits(fruits));
+
+
+// 11. // Посчитай количество каждой оценки
+const grades = ['A', 'B', 'A', 'C', 'B', 'A', 'D', 'B', 'A'];
+// Ожидаемый результат: {A: 4, B: 3, C: 1, D: 1}
+const countGrades = (array) => {
+    const resultObject = new Object;
+    for (const element of array) {
+        if(resultObject[element] === undefined)
+            resultObject[element] = 0;
+        resultObject[element] += 1;
+    }
+    return resultObject;
+};
+console.log(countGrades(grades));
+
+
+// 12. Статистика по длинам слов. Создай объект, где ключ - длина слова, значение - количество слов такой длины
+const words = ['cat', 'dog', 'elephant', 'cat', 'mouse', 'elephant'];
+// Ожидаемый результат: {3: 3, 5: 1, 8: 2}
+const getStatisticWords = (array) => {
+    const resultObject = new Object;
+    for (const element of array) {
+        let lengthWord = element.length;
+        if(resultObject[lengthWord] === undefined)
+            resultObject[lengthWord] = 0;
+        resultObject[lengthWord] += 1
+    }
+    return resultObject;
+};
+console.log(getStatisticWords(words));
+
+
+// 13. Сгруппируй имена по первой букве
+const names = ['Alice', 'Bob', 'Anna', 'Charlie', 'Alex', 'Barbara'];
+// Ожидаемый результат: {A: ['Alice', 'Anna', 'Alex'], B: ['Bob', 'Barbara'], C: ['Charlie']}
+const getGroupNameByFirstCharacter = (array) => {
+    const resultObject = new Object;
+    for (element of names) {
+        if(resultObject[element[0]] === undefined)
+            resultObject[element[0]] = []
+        resultObject[element[0]].push(element);
+    }
+    return resultObject;
+};
+console.log(getGroupNameByFirstCharacter(names));
+
+
+// 14. Подсчет четных и нечетных чисел. Создайте объект с количеством четных и нечетных чисел
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// Ожидаемый результат: {even: 5, odd: 5}
+const getCountEvenOddNumbers = (array) => {
+    return array.reduce(
+        (accum, value) => value % 2 == 0 ? {...accum, even: accum.even + 1} : {...accum, odd: accum.odd + 1}, 
+        {even: 0, odd: 0}
+    );
+};
+console.log(getCountEvenOddNumbers(numbers))
+
+
+// 15. Статистика по категориям товаров. Посчитай количество товаров в каждой категории
+const arrayProducts = [
+    {name: 'laptop', category: 'electronics'},
+    {name: 'shirt', category: 'clothing'},
+    {name: 'phone', category: 'electronics'},
+    {name: 'pants', category: 'clothing'},
+    {name: 'headphones', category: 'electronics'}
+];
+// Ожидаемый результат: {electronics: 3, clothing: 2}
+console.log(groupByCategories(arrayProducts));
+
+
+// 16. Самый частый элемент. Найди цвет, который встречается чаще всего
+const colors = ['red', 'blue', 'red', 'green', 'blue', 'blue', 'yellow'];
+// Ожидаемый результат: 'blue'
+const getOftenColor = (array) => {
+    const colorObject = new Object;
+    const resultObject = {name: undefined, count: 0};
+    for (const element of array) {
+        if(colorObject[element] === undefined)
+            colorObject[element] = 0;
+        colorObject[element] += 1;
+        if(colorObject[element] > resultObject.count) {
+            resultObject.name = element;
+            resultObject.count = colorObject[element];
+        }       
+    }
+    return resultObject.name;
+}
+console.log(getOftenColor(colors));
+
+
+// 17. Группировка по возрасту. Сгруппируй людей по возрасту
+const people = [
+    {name: 'John', age: 25},
+    {name: 'Alice', age: 30},
+    {name: 'Bob', age: 25},
+    {name: 'Charlie', age: 30},
+    {name: 'David', age: 25}
+];
+// Ожидаемый результат: {25: ['John', 'Bob', 'David'], 30: ['Alice', 'Charlie']}
+console.log(groupByCategories(people, 'age'));
+
+
+
+// 18. Подсчет уникальных элементов. Создай объект, показывающий, является ли элемент уникальным (встречается 1 раз)
+const items = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple', 'kiwi'];
+// Ожидаемый результат: {apple: false, banana: false, orange: true, kiwi: true}
+const getUniqElements = (array) => {
+    const resultObject = new Object;
+    for (const element of array) {
+        if(array.indexOf(element) === array.lastIndexOf(element))
+            resultObject[element] = true;
+        else
+            resultObject[element] = false;
+    }
+    return resultObject;
+}
+console.log(getUniqElements(items));
