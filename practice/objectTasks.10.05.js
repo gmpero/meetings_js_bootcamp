@@ -8,21 +8,11 @@
 // console.log(getValue({user: {name: "John", age: 30}}, "user.name")); // → "John"
 // console.log(getValue({a: {b: {c: 42}}}, "a.b.c")); // → 42
 
-const getValue = (object, src) => {
-    const keys = src.split('.');
-    let value = object;
-    for (const key of keys) {
-        value = value[key];
-    }
-    return value;
-}
-console.log(getValue({user: {name: "John", age: 30}}, "user.name")); // → "John"
-console.log(getValue({a: {b: {c: 42}}}, "a.b.c")); // → 42
-
 
 // 2. Верни объект с свойствами, которые отличаются между двумя объектами
 // objectDifference({a: 1, b: 2, c: 3}, {a: 1, b: 4, d: 5}) 
 // → {b: 2, c: 3, d: 5}
+
 
 //  3. Создай каррированные версии всех функций в объекте
 // const math = {
