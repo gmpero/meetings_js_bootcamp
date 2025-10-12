@@ -85,11 +85,17 @@ class Character {
             console.log('Поражение!')
         }
     }
+
+    drinkMixture(mixture) {
+        this.strength += mixture.amountOfStrength;
+        this.agility += mixture.amountOfAgility;
+        this.health += mixture.amountOfHealth;
+    }
 }
 
-const person1 = new Character('Halk', 11, 4, 100);
-const person2 = new Character('Ironman', 10, 5, 100);
-person1.startAutofight(person2);
+// const person1 = new Character('Halk', 11, 4, 100);
+// const person2 = new Character('Ironman', 10, 5, 100);
+// person1.startAutofight(person2);
 
 
 // console.log(person2.showInfo());
